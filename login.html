@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" class="username" placeholder="Enter Your Username">
+    <input type="text" class="password" placeholder="Enter Your Password">
+    <button class="loginbutton" onclick="login()">Log In</button>
+    <script>
+// localStorage.clear();
+
+        // Store an object in local storage
+        // var user = { name: 'John Doe', age: 30 };
+        // localStorage.setItem('user', JSON.stringify(user));
+
+        // // Retrieve and parse the object from local storage
+        // var storedUser = JSON.parse(localStorage.getItem('user'));
+        // console.log('User:', storedUser); // Output: User: { name: 'John Doe', age: 30 }
+        // console.log(storedUser.name);
+        // console.log(storedUser.age);
+
+        
+
+        function login() {
+            let username = document.querySelector(".username").value;
+            let password = document.querySelector(".password").value;
+
+            let userobj = {
+                'username': username,
+                'password': password
+            }
+
+            localStorage.setItem('user', JSON.stringify(userobj));
+            window.location.href = 'home.html';
+        }
+
+
+
+        window.onload = function () {
+            let localuseername = JSON.parse(localStorage.getItem('user'));
+            console.log(localuseername.username);
+            if (localStorage.length === 0) {
+                window.location.href = 'login.html';
+            }
+            else {
+                window.location.href = 'home.html';
+            }
+        }
+    </script>
+</body>
+
+</html>
